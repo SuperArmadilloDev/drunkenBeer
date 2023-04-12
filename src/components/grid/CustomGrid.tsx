@@ -1,39 +1,49 @@
 import { useState } from 'react';
 import { GridLayout, GridLayoutItem } from '@progress/kendo-react-layout';
 import useBreakpoint from 'use-breakpoint';
-import { GRID_CONFIG } from '../../constants/gridConfig';
-import { BREAKPOINTS } from '../../constants/breakpoints';
-import { Beer } from '../../common/types';
 
+//Compnents
 import CustomCard from '../card/CustomCard';
 import PageNavigation from '../pageNavigation/PageNavigation';
+
+//Constants
+import { GRID_CONFIG } from '../../constants/gridConfig';
+import { BREAKPOINTS } from '../../constants/breakpoints';
+
+//Hooks & contexts
+import useFetchData from '../../hooks/UseFetchData';
 
 const getGridConfig = (
   breakpoint: string | number,
   GRID_CONFIG: { [x: string]: any }
 ) => GRID_CONFIG[breakpoint];
 
-interface Props {
-  data: Beer[];
-}
+const CustomGrid = () => {
+  const ROW_NB = 2;
+  const COLS_NB = 3;
+  const [perPageNb] = useState(ROW_NB * COLS_NB);
 
-const CustomGrid = (props: Props) => {
+  const [currPage, setCurrPage] = useState(1);
+
   const { breakpoint } = useBreakpoint(BREAKPOINTS, 'desktop');
-  const [posts, setPosts] = useState([]);
-  const { postsContainer, featuredOrientation } = getGridConfig(
-    breakpoint,
-    GRID_CONFIG
+  const { postsContainer } = getGridConfig(breakpoint, GRID_CONFIG);
+
+  const beers = useFetchData(
+    `https://api.punkapi.com/v2/beers?page=${currPage}&per_page=${perPageNb}`
   );
 
-  const data = props.data;
+  const updatePage = (nb: number) => {
+    setCurrPage(nb);
+  };
 
   return (
     <div>
       <GridLayout
+        className='mb-2'
         gap={{ rows: 20, cols: 20 }}
         cols={postsContainer.cols}
       >
-        {data.map((beer, idx) => {
+        {beers.map((beer) => {
           return (
             <GridLayoutItem key={beer.id}>
               <CustomCard data={beer} />
@@ -41,32 +51,12 @@ const CustomGrid = (props: Props) => {
           );
         })}
       </GridLayout>
-      <PageNavigation />
+      <PageNavigation
+        updatePage={updatePage}
+        className='fixed-bottom'
+      />
     </div>
   );
 };
 
 export default CustomGrid;
-
-// <Card className='h-100'>
-//   {beer.image_url !== undefined && (
-//     <div className='d-flex justify-content-center border-bottom border-dark p-3'>
-//       <CardImage
-//         className='img-fluid cimg'
-//         src={beer.image_url}
-//       />
-//     </div>
-//   )}
-//   <div>
-//     <CardHeader>
-//       <CardTitle>{beer.name}</CardTitle>
-//       <CardSubtitle>
-//         <div className='d-flex justify-content-between'>
-//           <div>{beer.tagline}</div>
-//           <div>ABV: {beer.abv}%</div>
-//         </div>
-//       </CardSubtitle>
-//     </CardHeader>
-//     <CardBody>{beer.description}</CardBody>
-//   </div>
-// </Card>
