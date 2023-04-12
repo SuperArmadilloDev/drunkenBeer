@@ -1,58 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from '@progress/kendo-react-buttons';
-import kendoka from './kendoka.svg';
+import { Switch, SwitchChangeEvent } from '@progress/kendo-react-inputs';
+import { useState } from 'react';
 import './App.scss';
 
-import { Beer } from './common/types';
+import CustomGrid from './components/grid/CustomGrid';
 
 function App() {
-  const [beers, setBeers] = useState<Beer[]>([]);
-  const fetchBeerData = () => {
-    fetch('https://api.punkapi.com/v2/beers')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setBeers(data);
-      });
+  const [toggle, setToggle] = useState(false);
+
+  const changeFilter = (event: SwitchChangeEvent) => {
+    setToggle(event.target.value);
   };
 
-  useEffect(() => {
-    fetchBeerData();
-  }, []);
-
   return (
-    <div className='App'>
-      <h1>Beer Names to test</h1>
-      <ul>
-        {beers.map((beers) => (
-          <li>{beers.name}</li>
-        ))}
-      </ul>
+    <div className='App px-3 pt-5'>
+      <div className='d-flex justify-content-between align-items-center'>
+        <h1>Beer Catalog</h1>
+        <div className='d-flex gap-3'>
+          <h5>Show me your strongest beer!</h5>
+          <Switch
+            value={toggle}
+            onChange={changeFilter}
+            onLabel={'> 8'}
+            offLabel={'< 8'}
+          />
+        </div>
+      </div>
+      <CustomGrid toggle={toggle} />
     </div>
   );
-
-  // const handleClick = React.useCallback(() => {
-  //   window.open('https://www.telerik.com/kendo-react-ui/components/', '_blank');
-  // }, []);
-
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={kendoka} className="App-logo" alt="kendoka" />
-  //       <p>
-  //         Edit <code>src/App.tsx</code> and save to reload.
-  //       </p>
-  //       <Button
-  //         themeColor={'primary'}
-  //         size={"large"}
-  //         onClick={handleClick}
-  //       >
-  //         Learn KendoReact
-  //       </Button>
-  //     </header>
-  //   </div>
-  // );
 }
 
 export default App;
