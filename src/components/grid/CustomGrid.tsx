@@ -6,6 +6,7 @@ import { BREAKPOINTS } from '../../constants/breakpoints';
 import { Beer } from '../../common/types';
 
 import CustomCard from '../card/CustomCard';
+import PageNavigation from '../pageNavigation/PageNavigation';
 
 const getGridConfig = (
   breakpoint: string | number,
@@ -40,6 +41,7 @@ const CustomGrid = (props: Props) => {
           );
         })}
       </GridLayout>
+      <PageNavigation />
     </div>
   );
 };
