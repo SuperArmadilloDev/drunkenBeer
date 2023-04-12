@@ -1,12 +1,12 @@
 [{
     "id": 1,
     "name" : "member A",
-    "linkId": 3,
+    "linkId": 3
 },
 {
     "id": 2,
     "name": "member B",
-    "linkId": 1,
+    "linkId": 1
 },
 {
     "id": 3,
