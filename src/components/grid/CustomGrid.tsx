@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { GridLayout, GridLayoutItem } from '@progress/kendo-react-layout';
 import useBreakpoint from 'use-breakpoint';
 
+import './CustomGrid.scss';
+
 //Compnents
 import CustomCard from '../card/CustomCard';
 import PageNavigation from '../pageNavigation/PageNavigation';
@@ -37,7 +39,7 @@ const CustomGrid = () => {
   };
 
   return (
-    <div>
+    <div className='pb'>
       <GridLayout
         className='mb-2'
         gap={{ rows: 20, cols: 20 }}
