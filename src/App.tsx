@@ -1,11 +1,26 @@
 import { Switch, SwitchChangeEvent } from '@progress/kendo-react-inputs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
+// import data from './data/donneesTest.json';
+import { CustomGrid } from './components';
 
-import CustomGrid from './components/grid/CustomGrid';
+import { whoIsPaying } from './utils/FindParent';
+interface Data {
+  id: number;
+  name: string;
+  linkId: number | null;
+
+  // all the child of the current node
+  nodes?: number[];
+}
+
+let data: Data[] = require('./data/donneesTest.json');
 
 function App() {
   const [toggle, setToggle] = useState(false);
+  useEffect(() => {
+    console.log(whoIsPaying(data));
+  }, []);
 
   const changeFilter = (event: SwitchChangeEvent) => {
     setToggle(event.target.value);
