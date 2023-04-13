@@ -9,7 +9,7 @@ interface ChildMapper {
   // Cyclic checker
   visited: boolean;
 }
-//
+
 const cyclicParentObj: Record<string, number[]> = {};
 const cyclicParent: number[] = [];
 
