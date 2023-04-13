@@ -6,9 +6,14 @@ const useFetchData = (url: string) => {
   const [data, setData] = useState<Beer[]>([]);
 
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setData(data));
+    try {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => setData(data));
+    } catch (error) {
+      console.error(error);
+      setData([]);
+    }
   }, [url]);
 
   return data;

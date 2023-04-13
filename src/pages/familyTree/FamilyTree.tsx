@@ -3,6 +3,7 @@ import { Data, Family } from '../../common/types';
 import { whoIsPaying } from '../../Service/FindParent';
 
 import { PanelBar, PanelBarItem } from '@progress/kendo-react-layout';
+import { Upload } from '@progress/kendo-react-upload';
 
 const FamilyTree = () => {
   let data: Data[] = require('../../data/donneesTest.json');
@@ -76,6 +77,17 @@ const FamilyTree = () => {
           })}
         </PanelBarItem>
       </PanelBar>
+
+      <Upload
+        batch={false}
+        multiple={false}
+        defaultFiles={[]}
+        withCredentials={false}
+        saveUrl={'https://demos.telerik.com/kendo-ui/service-v4/upload/save'}
+        removeUrl={
+          'https://demos.telerik.com/kendo-ui/service-v4/upload/remove'
+        }
+      />
     </div>
   );
 };
