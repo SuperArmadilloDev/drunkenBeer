@@ -2,9 +2,9 @@ import { Switch, SwitchChangeEvent } from '@progress/kendo-react-inputs';
 import { useEffect, useState } from 'react';
 import './App.scss';
 // import data from './data/donneesTest.json';
-import { CustomGrid } from './components';
+import { CustomGrid, Header } from './components';
 
-import { whoIsPaying } from './utils/FindParent';
+import { whoIsPaying } from './Service/FindParent';
 interface Data {
   id: number;
   name: string;
@@ -28,6 +28,7 @@ function App() {
 
   return (
     <div className='App px-3 pt-5'>
+      <Header />
       <div className='d-flex justify-content-between align-items-center'>
         <h1>Beer Catalog</h1>
         <div className='d-flex gap-3'>
