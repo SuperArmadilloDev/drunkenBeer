@@ -1,10 +1,9 @@
 import { Switch, SwitchChangeEvent } from '@progress/kendo-react-inputs';
 import { useEffect, useState } from 'react';
-import './App.scss';
-// import data from './data/donneesTest.json';
-import { CustomGrid, Header } from './components';
 
-import { whoIsPaying } from './Service/FindParent';
+import { CustomGrid, Header } from '../../components';
+
+import { whoIsPaying } from '../../Service/FindParent';
 interface Data {
   id: number;
   name: string;
@@ -14,9 +13,9 @@ interface Data {
   nodes?: number[];
 }
 
-let data: Data[] = require('./data/donneesTest.json');
+let data: Data[] = require('../../data/donneesTest.json');
 
-function App() {
+function Home() {
   const [toggle, setToggle] = useState(false);
   useEffect(() => {
     console.log(whoIsPaying(data));
@@ -27,8 +26,7 @@ function App() {
   };
 
   return (
-    <div className='App px-3 pt-5'>
-      <Header />
+    <div>
       <div className='d-flex justify-content-between align-items-center'>
         <h1>Beer Catalog</h1>
         <div className='d-flex gap-3'>
@@ -46,4 +44,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

@@ -18,9 +18,9 @@ const CustomCard = (props: Props) => {
   const data = props.data;
 
   return (
-    <Card className='h-100'>
-      {data.image_url !== undefined && (
-        <div className='d-flex justify-content-center border-bottom border-dark p-3'>
+    <Card className='h-100 custom-card'>
+      {data.image_url && (
+        <div className='d-flex justify-content-center border-bottom border-dark p-3 image-div'>
           <CardImage
             className='img-fluid cimg'
             src={data.image_url}

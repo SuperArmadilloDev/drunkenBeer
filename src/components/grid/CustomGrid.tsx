@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { GridLayout, GridLayoutItem } from '@progress/kendo-react-layout';
-import { Switch, SwitchChangeEvent } from '@progress/kendo-react-inputs';
 import useBreakpoint from 'use-breakpoint';
 
 // Misc

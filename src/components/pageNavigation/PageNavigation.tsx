@@ -43,7 +43,7 @@ const PageNavigation = (props: Props) => {
           />
           <div className='d-flex justify-content-center'>
             <input
-              className='text-center border border-primary rounded'
+              className='text-center border border-primary rounded incust'
               id='selectPage'
               type='number'
               value={nb}
