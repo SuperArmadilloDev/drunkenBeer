@@ -1,11 +1,16 @@
-import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import Home from './pages/home/Home';
+
 import { Home, Layout, FamilyTree } from './pages';
+
 import './index.scss';
 
-export default function App() {
-  return (
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route
@@ -27,7 +32,5 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-  );
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
+  </React.StrictMode>
+);

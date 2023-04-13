@@ -1,17 +1,24 @@
 import { Button } from '@progress/kendo-react-buttons';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Header.scss';
-// import '../../font/TiltPrism';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
+  const routeChange = () => {
+    navigate(location.pathname.includes('family') ? '' : 'family');
+  };
   return (
     <div className='d-flex bg-color custom-header d-flex justify-content-between align-items-center gap-3'>
       <h1 className='text-light header-text'>The DrunkenBeer</h1>
       <Button
         className='custom-button'
         themeColor={'primary'}
-        icon='cart'
+        icon={location.pathname.includes('family') ? 'home' : 'cart'}
         size='large'
-        iconClass='custom-icon'
+        onClick={routeChange}
       />
     </div>
   );
