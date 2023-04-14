@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { GridLayout } from '@progress/kendo-react-layout';
-import useBreakpoint from 'use-breakpoint';
+import { useBreakpoint } from 'use-breakpoint';
 
 // Misc
 import './CustomGrid.scss';
@@ -10,7 +10,7 @@ import { GRID_CONFIG } from '../../constants/gridConfig';
 import { BREAKPOINTS } from '../../constants/breakpoints';
 
 interface Props {
-  gridData: ReactNode;
+  children: ReactNode;
 }
 
 const getGridConfig = (
@@ -18,7 +18,7 @@ const getGridConfig = (
   GRID_CONFIG: { [x: string]: any }
 ) => GRID_CONFIG[breakpoint];
 
-const CustomGrid = (props: Props) => {
+const CustomGrid = ({ children }: Props) => {
   const { breakpoint } = useBreakpoint(BREAKPOINTS, 'desktop');
   const { postsContainer } = getGridConfig(breakpoint, GRID_CONFIG);
 
@@ -30,7 +30,7 @@ const CustomGrid = (props: Props) => {
           gap={{ rows: 20, cols: 20 }}
           cols={postsContainer.cols}
         >
-          {props.gridData}
+          {children}
         </GridLayout>
       </div>
     </div>

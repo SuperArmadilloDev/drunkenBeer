@@ -16,28 +16,34 @@ interface Props {
   addInfSub?: string;
   description?: string;
 }
-const CustomCard = (props: Props) => {
+const CustomCard = ({
+  image,
+  title,
+  subtitle,
+  addInfSub,
+  description,
+}: Props) => {
   return (
     <Card className='h-100 custom-card'>
-      {props.image && (
+      {image && (
         <div className='d-flex justify-content-center border-bottom border-dark p-3 image-div'>
           <CardImage
-            className='img-fluid cimg'
-            src={props.image}
+            className='img-fluid custom-image'
+            src={image}
           />
         </div>
       )}
       <div>
         <CardHeader>
-          <CardTitle>{props.title}</CardTitle>
+          <CardTitle>{title}</CardTitle>
           <CardSubtitle>
             <div className='d-flex justify-content-between'>
-              {props.subtitle && <div>{props.subtitle}</div>}
-              {props.addInfSub && <div>{props.addInfSub}</div>}
+              {subtitle && <div>{subtitle}</div>}
+              {addInfSub && <div>{addInfSub}</div>}
             </div>
           </CardSubtitle>
         </CardHeader>
-        {props.description && <CardBody>{props.description}</CardBody>}
+        {description && <CardBody>{description}</CardBody>}
       </div>
     </Card>
   );

@@ -5,6 +5,7 @@ import { UseFetchData } from '../../hooks';
 import { Switch, SwitchChangeEvent } from '@progress/kendo-react-inputs';
 import { useState } from 'react';
 import { GridLayoutItem } from '@progress/kendo-react-layout';
+// import logo from '../../data/test_image.png';
 
 function Home() {
   const ROW_NB = 2;
@@ -40,8 +41,8 @@ function Home() {
           />
         </div>
       </div>
-      <CustomGrid
-        gridData={beers.map((data) => {
+      <CustomGrid>
+        {beers.map((data) => {
           return (
             <GridLayoutItem key={data.id}>
               <CustomCard
@@ -54,7 +55,7 @@ function Home() {
             </GridLayoutItem>
           );
         })}
-      />
+      </CustomGrid>
       <PageNavigation
         updatePage={updatePage}
         className='fixed-bottom'
@@ -64,6 +65,7 @@ function Home() {
     <div>
       <h1 className='text-center'>Oh no!</h1>
       <p className='text-center'>an error occured</p>
+      <p className='text-center'>(you may have gone too far back up!)</p>
     </div>
   );
 }
