@@ -9,7 +9,7 @@ interface ChildMapper {
   // Cyclic checker
   visited: boolean;
 }
-//
+
 const cyclicParentObj: Record<string, number[]> = {};
 const cyclicParent: number[] = [];
 
@@ -58,7 +58,7 @@ function checkCycle(childMap: Record<string, ChildMapper>) {
  */
 function isCyclic(i: string, childMap: Record<string, ChildMapper>) {
   if (childMap[i].visited) {
-    if (cyclicParent.length > 0 && childMap[i].linkId)
+    if (cyclicParent.length && childMap[i].linkId)
       cyclicParentObj[i] = cyclicParent.splice(0, cyclicParent.length);
 
     childMap[i].child = [];
@@ -93,19 +93,23 @@ function createFamily(childMap: Record<string, ChildMapper>, data: Data[]) {
     for (const child of childMap[key].child) {
       childNames.push(data.find((x) => x.id === child)?.name);
     }
-    family.push({ parentName, childNames });
+    if (!childMap[key].linkId) family.push({ parentName, childNames });
   }
   return family;
 }
 
 function loopedMembers(data: Data[]) {
-  const membersLoop: (string | undefined)[] = [];
+  const oneLoop: (string | undefined)[] = [];
+  const allLoop: Record<string, (string | undefined)[]> = {};
+
   for (const key in cyclicParentObj) {
     cyclicParentObj[key].forEach((e) => {
-      membersLoop.push(data.find((x) => x.id === e)?.name);
+      oneLoop.push(data.find((x) => x.id === e)?.name);
     });
-    return membersLoop;
+    allLoop[key] = structuredClone(oneLoop);
+    oneLoop.splice(0, oneLoop.length);
   }
+  return allLoop;
 }
 
 function whoIsPaying(data: Data[]) {

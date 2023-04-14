@@ -2,3 +2,4 @@
 export { default as CustomGrid } from './grid/CustomGrid';
 export { default as CustomCard } from './card/CustomCard';
 export { default as PageNavigation } from './pageNavigation/PageNavigation';
+export { default as Header } from './header/Header';
