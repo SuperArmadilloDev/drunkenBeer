@@ -1,5 +1,3 @@
-import { Beer } from '../../common/types';
-
 import {
   Card,
   CardBody,
@@ -12,35 +10,36 @@ import {
 import './CustomCard.scss';
 
 interface Props {
-  data: Beer;
+  image?: string;
+  title: string;
+  subtitle?: string;
+  addInfSub?: string;
+  description?: string;
 }
 const CustomCard = (props: Props) => {
-  const data = props.data;
-
   return (
     <Card className='h-100 custom-card'>
-      {data.image_url && (
+      {props.image && (
         <div className='d-flex justify-content-center border-bottom border-dark p-3 image-div'>
           <CardImage
             className='img-fluid cimg'
-            src={data.image_url}
+            src={props.image}
           />
         </div>
       )}
       <div>
         <CardHeader>
-          <CardTitle>{data.name}</CardTitle>
+          <CardTitle>{props.title}</CardTitle>
           <CardSubtitle>
             <div className='d-flex justify-content-between'>
-              <div>{data.tagline}</div>
-              <div>ABV: {data.abv}%</div>
+              {props.subtitle && <div>{props.subtitle}</div>}
+              {props.addInfSub && <div>{props.addInfSub}</div>}
             </div>
           </CardSubtitle>
         </CardHeader>
-        <CardBody>{data.description}</CardBody>
+        {props.description && <CardBody>{props.description}</CardBody>}
       </div>
     </Card>
   );
 };
-
 export default CustomCard;
