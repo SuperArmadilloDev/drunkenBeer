@@ -1,15 +1,6 @@
-@import './themes/kendo-theme-custom.scss';
+$kendo-component-border: #35090a;
+$kendo-color-primary: #35090a;
+$kendo-button-border: #fff;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@import '~@progress/kendo-theme-bootstrap/dist/all.scss';
+@import '~bootstrap/scss/bootstrap.scss';

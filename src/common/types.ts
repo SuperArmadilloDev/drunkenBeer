@@ -1,4 +1,4 @@
-// Main type
+// Main type Beer
 export type Beer = {
   id: string;
   name: string;
@@ -67,4 +67,16 @@ export type Ingredient = {
 export type Amount = {
   value?: number;
   unit?: string;
+};
+
+// Misc
+export type Data = {
+  id: number;
+  name: string;
+  linkId: number | null;
+};
+
+export type Family = {
+  parentName?: string;
+  childNames: (string | undefined)[];
 };

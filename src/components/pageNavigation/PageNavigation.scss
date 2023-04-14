@@ -1,0 +1,18 @@
+.custom-width {
+  width: 10%;
+  min-width: 100px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  width: 50%;
+  min-width: 36px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

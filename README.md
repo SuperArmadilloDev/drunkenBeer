@@ -45,8 +45,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-# PunkApiFrontTest
-
 ## Recueil des Besoins:
 
 ### 1<sup>e</sup> partie
@@ -67,11 +65,3 @@ Faire une fonction TS ou JS:
 - Un membre possède:
   - linkId | Si != null --> Un enfant (pas facturé) Sinon --> est un parent
 - Détection de référence circulaire (ex: A -> B -> A)
-
-## Tâches
-
-### Partie 1
-
-- [x] initialisation du projet
-- [x] Fetch de l'API
-- [ ] insertion de Kendo Ui
