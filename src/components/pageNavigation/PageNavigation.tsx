@@ -8,21 +8,21 @@ interface Props {
   className?: string;
 }
 
-const PageNavigation = (props: Props) => {
+const PageNavigation = ({ updatePage, className }: Props) => {
   const [nb, setNb] = useState(1);
 
   const onPrevClick = () => {
-    props.updatePage(nb - 1);
+    updatePage(nb - 1);
     setNb(nb - 1);
   };
 
   const onNextClick = () => {
-    props.updatePage(nb + 1);
+    updatePage(nb + 1);
     setNb(nb + 1);
   };
 
   const onPageChanged = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter') props.updatePage(nb);
+    if (event.key === 'Enter') updatePage(nb);
   };
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     const value =
@@ -31,9 +31,9 @@ const PageNavigation = (props: Props) => {
   };
 
   return (
-    <div className={props.className}>
+    <div className={className}>
       <div className='w-100 d-flex justify-content-center'>
-        <div className='d-flex justify-content-between align-items-center cwidth'>
+        <div className='d-flex justify-content-between align-items-center custom-width'>
           <Button
             onClick={onPrevClick}
             className='buttons-container-button'

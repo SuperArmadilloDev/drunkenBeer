@@ -80,6 +80,7 @@ function isInCycle(id: number) {
   for (const key in cyclicParentObj) {
     if (cyclicParentObj[key].some((x) => x === id)) return true;
   }
+  return false;
 }
 
 function createFamily(childMap: Record<string, ChildMapper>, data: Data[]) {
@@ -88,8 +89,8 @@ function createFamily(childMap: Record<string, ChildMapper>, data: Data[]) {
     if (isInCycle(childMap[key].id) && childMap[key].linkId) continue;
 
     const parentName = data.find((x) => x.id === childMap[key].id)?.name;
-
     const childNames = [];
+
     for (const child of childMap[key].child) {
       childNames.push(data.find((x) => x.id === child)?.name);
     }

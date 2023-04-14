@@ -11,7 +11,7 @@ const Header = () => {
     navigate(location.pathname.includes('family') ? '' : 'family');
   };
   return (
-    <div className='d-flex bg-color custom-header d-flex justify-content-between align-items-center gap-3'>
+    <div className='d-flex custom-header d-flex justify-content-between align-items-center gap-3'>
       <h1 className='text-light header-text'>The DrunkenBeer</h1>
       <Button
         className='custom-button'

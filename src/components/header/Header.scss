@@ -7,8 +7,15 @@ $dark-beer: #35090a;
   font-weight: normal;
 }
 
-.bg-color {
-  background-color: $dark-beer;
+@media only screen and (max-width: 850px) {
+  .header-text {
+    font-size: 4em;
+  }
+}
+@media only screen and (min-width: 851px) {
+  .header-text {
+    font-size: 5.5em;
+  }
 }
 
 .custom- {
@@ -19,19 +26,9 @@ $dark-beer: #35090a;
 }
 
 .custom-header {
+  background-color: $dark-beer;
   font-family: 'TiltPrismRegular';
   height: 10em;
   padding-left: 2em;
   padding-right: 2em;
-}
-
-@media only screen and (max-width: 850px) {
-  .header-text {
-    font-size: 4em;
-  }
-}
-@media only screen and (min-width: 851px) {
-  .header-text {
-    font-size: 5.5em;
-  }
 }
